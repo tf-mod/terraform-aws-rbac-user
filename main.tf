@@ -36,8 +36,8 @@ data "template_file" "login-profile" {
   template = file(format("%s/resources/credential.tpl", path.module))
 
   vars = {
-    name = aws_iam_user.user.name
-    password  = random_password.password.result
+    name     = aws_iam_user.user.name
+    password = random_password.password.result
   }
 }
 
@@ -46,9 +46,9 @@ locals {
 }
 
 resource "local_file" "login-profile" {
-  sensitive_content  = data.template_file.login-profile.rendered
-  filename = local.creds_filepath
-  file_permission = "0600"
+  sensitive_content = data.template_file.login-profile.rendered
+  filename          = local.creds_filepath
+  file_permission   = "0600"
 }
 
 resource "null_resource" "login-profile" {
