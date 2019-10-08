@@ -1,4 +1,10 @@
 
+# features
+variable "features" {
+  description = "A configuration map for feature toggle"
+  default     = { "login" = "off" }
+}
+
 # policies
 variable "policy_arn" {
   description = "A list of full arn of iam policy to apply the user"

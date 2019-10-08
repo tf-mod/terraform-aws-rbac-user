@@ -7,4 +7,5 @@ module "user1" {
   name       = var.name
   policy_arn = [aws_iam_policy.force-mfa.arn]
   groups     = ["devops-team"]
+  features   = { "login" = "on" }
 }
