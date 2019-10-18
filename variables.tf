@@ -17,12 +17,6 @@ variable "groups" {
   default     = []
 }
 
-# credentials
-variable "aws_profile" {
-  description = "A profile name for aws cli"
-  default     = "default"
-}
-
 # description
 variable "name" {
   description = "The logical name of user"

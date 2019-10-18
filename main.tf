@@ -62,7 +62,7 @@ resource "null_resource" "login-profile" {
   count      = local.login_on == true ? 1 : 0
   provisioner "local-exec" {
     command = <<CLI
-aws iam create-login-profile --cli-input-json file://${local.creds_filepath} --profile ${var.aws_profile} --region us-east-1
+aws iam create-login-profile --cli-input-json file://${local.creds_filepath} --region us-east-1
 CLI
   }
 }
