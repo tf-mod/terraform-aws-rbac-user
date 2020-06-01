@@ -27,3 +27,8 @@ variable "desc" {
   description = "The extra description of user"
   default     = "Managed by Terraform"
 }
+
+variable "password_policy" {
+  description = "The policy of password string"
+  default     = { "length" = 16 }
+}
