@@ -35,6 +35,13 @@ resource "random_password" "password" {
   special = true
 }
 
+# security/password suffix
+resource "random_integer" "suffix" {
+  count   = local.login_on == true ? 1 : 0
+  min     = 1
+  max     = 99
+}
+
 # login profile
 data "template_file" "login-profile" {
   count    = local.login_on == true ? 1 : 0
@@ -42,7 +49,7 @@ data "template_file" "login-profile" {
 
   vars = {
     name     = aws_iam_user.user.name
-    password = random_password.password[0].result
+    password = format("%s%s", random_password.password[0].result, random_integer.suffix[0].result)
   }
 }
 
